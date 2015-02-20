@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+
+<project name="pms_parser" basedir="." default="build">
+
+
+	<property file="build.properties" />
+
+	<target name="build">
+		<echo message="${build.path}" />
+		<echo message="${test.parameter}" />
+	</target>
+
+</project>
