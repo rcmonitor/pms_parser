@@ -1,0 +1,3 @@
+[submodule "pms_parser_subscriber"]
+	path = pms_parser_subscriber
+	url = https://github.com/rcmonitor/pms_parser_subscriber.git
