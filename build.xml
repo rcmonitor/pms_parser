@@ -4,22 +4,27 @@
 
 
 	<property file="build.properties" />
-	
-	<condition property="all.modules.present">
-		<and>
-			<available file="pms_processor" type="dir" />
-			<available file="pms_parser_emitter" type="dir" />
-		</and>
-	</condition>
+	<xmlproperty file="properties.xml" keepRoot="false" />
 
 	<target name="log_parameters">
 		<echo file="parameters.log">
-build.path = ${build.path}
-test.parameter = ${test.parameter}
-build.path.publisher = ${build.path.publisher}
-build.path.emitter = ${build.path.emitter}
+			build.path = ${build.path}
+			test.parameter = ${test.parameter}
+			build.path.downloader = ${build.path.downloader}
+			build.path.parser = ${build.path.parser}
 		</echo>
 	</target>
+
+	<condition property="all.modules.present">
+		<and>
+			<available file="${build.path.downloader}" type="dir" />
+			<available file="${build.path.parser}" type="dir" />
+		</and>
+		<echo file="parameters.log" append="true">
+both paths exists
+		</echo>
+	</condition>
+
 
 	<target name="init">
 		<echo message="${all.modules.present}" />

@@ -3,7 +3,9 @@
 <root-tag>
 
 	<build path="${Basedir}">
-		<path publisher="${build.path}/pms_processor" subscriber="${build.path}/pms_parser_emitter" />
+		<path downloader="${build.path}/pms_downloader_emitter" parser="${build.path}/pms_parser_subscriber" />
 	</build>
+
+	<test parameter="test parameter from properties.xml" />
 
 </root-tag>
