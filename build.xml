@@ -4,10 +4,22 @@
 
 
 	<property file="build.properties" />
+	
+	<condition property="all.modules.present">
+		<and>
+			<available file="pms_processor" type="dir" />
+			<available file="pms_parser_emitter" type="dir" />
+		</and>
+	</condition>
 
-	<target name="build">
+	<target name="init">
+		<echo message="${all.modules.present}" />
+	</target>
+
+	<target name="build" depends="init">
 		<echo message="${build.path}" />
 		<echo message="${test.parameter}" />
 	</target>
+
 
 </project>
