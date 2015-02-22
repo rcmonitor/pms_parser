@@ -12,6 +12,15 @@
 		</and>
 	</condition>
 
+	<target name="log_parameters">
+		<echo file="parameters.log">
+build.path = ${build.path}
+test.parameter = ${test.parameter}
+build.path.publisher = ${build.path.publisher}
+build.path.emitter = ${build.path.emitter}
+		</echo>
+	</target>
+
 	<target name="init">
 		<echo message="${all.modules.present}" />
 	</target>
