@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<root-tag>
+
+	<build path="${Basedir}">
+		<path publisher="${build.path}/pms_processor" subscriber="${build.path}/pms_parser_emitter" />
+	</build>
+
+</root-tag>
