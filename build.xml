@@ -6,6 +6,13 @@
 	<property file="build.properties" />
 	<xmlproperty file="properties.xml" keepRoot="false" />
 
+	<condition property="all.modules.present">
+		<and>
+			<available file="${build.path.downloader}" type="dir" />
+			<available file="${build.path.parser}" type="dir" />
+		</and>
+	</condition>
+
 	<target name="log_parameters">
 		<echo file="parameters.log">
 			build.path = ${build.path}
@@ -15,19 +22,12 @@
 		</echo>
 	</target>
 
-	<condition property="all.modules.present">
-		<and>
-			<available file="${build.path.downloader}" type="dir" />
-			<available file="${build.path.parser}" type="dir" />
-		</and>
+
+
+	<target name="init" if="all.modules.present" depends="log_parameters">
 		<echo file="parameters.log" append="true">
-both paths exists
+			all.modules.present
 		</echo>
-	</condition>
-
-
-	<target name="init">
-		<echo message="${all.modules.present}" />
 	</target>
 
 	<target name="build" depends="init">
