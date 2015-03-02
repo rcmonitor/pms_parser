@@ -5,7 +5,7 @@
 	<path downloader="pms_downloader_emitter" parser="pms_parser_subscriber" />
 
 	<file>
-		<log downloader="build_downloader.log" parser="build_parser.log" />
+		<log downloader="log${file.separator}build_downloader.log" parser="log${file.separator}build_parser.log" />
 	</file>
 
 	<test parameter="test parameter from properties.xml" />

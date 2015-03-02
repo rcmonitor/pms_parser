@@ -2,7 +2,7 @@
 
 <project name="pms_parser_root" basedir="." default="build">
 
-	<property name="build.main.output.filename" value="build_main.log" />
+	<property name="build.main.output.filename" value="log${file.separator}build_main.log" />
 	<property name="build.path.main.root" value="${basedir}" />
 
 	<target name="build">
