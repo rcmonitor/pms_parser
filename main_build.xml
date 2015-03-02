@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+
+<project name="pms_parser" basedir="." default="build">
+
+
+	<!--<property file="build.properties" />-->
+	<xmlproperty file="properties.xml" keepRoot="false" semanticAttributes="true" />
+
+
+	<target name="init_properties">
+		<property name="build.path.downloader" value="${basedir}/${path.downloader}" />
+		<property name="build.path.parser" value="${basedir}/${path.parser}" />
+
+		<condition property="all.modules.present">
+			<and>
+				<available file="${build.path.downloader}" type="dir" />
+				<available file="${build.path.parser}" type="dir" />
+			</and>
+		</condition>
+
+
+	</target>
+
+	<target name="log_properties">
+		<echo file="properties.log">
+basedir = ${basedir}
+<!--build.path = ${build.path}-->
+test.parameter = ${test.parameter}
+build.path.downloader = ${build.path.downloader}
+build.path.parser = ${build.path.parser}
+		</echo>
+	</target>
+
+
+	<target name="positive_check" if="all.modules.present">
+		<echo file="properties.log" append="true">
+			all.modules.present
+		</echo>
+	</target>
+
+	<target name="negative_check" unless="all.modules.present">
+		<echo file="properties.log" append="true">
+			not.all.modules present
+		</echo>
+	</target>
+
+	<target name="init" depends="init_properties,log_properties,positive_check,negative_check">
+		<echo message="all went fine" />
+	</target>
+
+	<target name="build" depends="init">
+		<!--<echo message="${build.path}" />-->
+		<echo message="${test.parameter}" />
+
+		<echo message="building parser subproject" />
+
+		<ant dir="${build.path.parser}" output="${build.path.main.root}${file.separator}${file.log.parser}" />
+		<ant dir="${build.path.downloader}" output="${build.path.main.root}${file.separator}${file.log.downloader}" />
+
+	</target>
+
+
+</project>

@@ -2,9 +2,11 @@
 
 <root-tag>
 
-	<build path="${Basedir}">
-		<path downloader="${build.path}/pms_downloader_emitter" parser="${build.path}/pms_parser_subscriber" />
-	</build>
+	<path downloader="pms_downloader_emitter" parser="pms_parser_subscriber" />
+
+	<file>
+		<log downloader="build_downloader.log" parser="build_parser.log" />
+	</file>
 
 	<test parameter="test parameter from properties.xml" />
 

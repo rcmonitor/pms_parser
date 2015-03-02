@@ -1,38 +1,13 @@
 <?xml version="1.0" ?>
 
-<project name="pms_parser" basedir="." default="build">
+<project name="pms_parser_root" basedir="." default="build">
 
+	<property name="build.main.output.filename" value="build_main.log" />
+	<property name="build.path.main.root" value="${basedir}" />
 
-	<property file="build.properties" />
-	<xmlproperty file="properties.xml" keepRoot="false" semanticAttributes="true" />
-
-	<condition property="all.modules.present">
-		<and>
-			<available file="${build.path.downloader}" type="dir" />
-			<available file="${build.path.parser}" type="dir" />
-		</and>
-	</condition>
-
-	<target name="log_parameters">
-		<echo file="parameters.log">
-			build.path = ${build.path}
-			test.parameter = ${test.parameter}
-			build.path.downloader = ${build.path.downloader}
-			build.path.parser = ${build.path.parser}
-		</echo>
-	</target>
-
-
-
-	<target name="init" if="all.modules.present" depends="log_parameters">
-		<echo file="parameters.log" append="true">
-			all.modules.present
-		</echo>
-	</target>
-
-	<target name="build" depends="init">
-		<echo message="${build.path}" />
-		<echo message="${test.parameter}" />
+	<target name="build">
+		<echo message="build.path.main.root = ${build.path.main.root}" />
+		<ant antfile="main_build.xml" output="${build.main.output.filename}" />
 	</target>
 
 
